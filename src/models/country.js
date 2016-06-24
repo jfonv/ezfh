@@ -9,7 +9,7 @@ const countrySchema = new Schema({
 });
 
 countrySchema.instance.getBalance = function () {
-  return 0;
+  return 4963;
 };
 
 module.exports = mongoose.model('Country', countrySchema);

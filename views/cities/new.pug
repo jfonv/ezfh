@@ -1,0 +1,24 @@
+extends ../shared/template
+block content
+  p#id(hidden)= id
+  #newCityForm
+    h1 Create A New City
+    label City Name
+    input#cityName(type="text" name="")
+    p
+    label Cost
+    input#cityCost(type="number" name="cost")
+    p
+    label Country
+    select#countryId
+    p
+    label Photo
+    input.photoIn(type="text" name="photos")
+    p
+    label Initial Balance
+    input#cityBalance(type="number" name="balance")
+    p
+    button#submitBtn() Save the City!
+  #cityProfile
+    h1#cityConfName
+    #success.fa.fa-spin You just created 
