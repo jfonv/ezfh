@@ -8,6 +8,8 @@ const countrySchema = new Schema({
   createdAt: { type: Date, default: Date.now },
 });
 
-countrySchema.
+countrySchema.instance.getBalance = function () {
+  return 0;
+};
 
 module.exports = mongoose.model('Country', countrySchema);
