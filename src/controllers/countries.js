@@ -22,7 +22,10 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
   const country = new Country(req.body);
-  console.log('NEW COUNTRY: ' + req.body);
-  country.save();
-  res.redirect('/country');
+  console.log('NEW COUNTRY: ' + req.body.name);
+  country.save( (e) => {
+      res.redirect('/');
+  }
+  );
+
 });
