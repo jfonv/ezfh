@@ -1,9 +1,10 @@
+/* eslint-disable func-names */
+
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const countrySchema = new Schema({
   name: String,
-  balance: Number,
   photos: { type: Array, default: [] },
   cityIds: [{ type: mongoose.Schema.ObjectId, ref: 'City' }],
   createdAt: { type: Date, default: Date.now },

@@ -3,3 +3,15 @@ extends ../shared/template
 
 block content
         h1 Country List
+        table
+          thead
+            td name
+            td(width=140) balance
+            td cities
+          each country in countries
+            tr
+              td= country.name
+              td= country.balance
+              td
+                each city in country.cityIds
+                  div= city.name

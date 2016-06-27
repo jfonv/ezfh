@@ -6,7 +6,7 @@ const router = module.exports = express.Router();
 
 // view city list
 router.get('/', (req, res) => {
-  res.render('cities/index');
+City.find().exec((err, cities) => res.render('cities/index', { cities }));
 });
 
 router.get('/new', (req, res) => {
@@ -14,8 +14,7 @@ router.get('/new', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  const id = req.params.id;
-  City.findById(id, (err, city) => {
+  City.findById(req.params.id).populate('country').exec((err, city) => {
     res.render('cities/profile', { city });
   });
 });

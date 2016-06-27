@@ -7,8 +7,9 @@ import City from '../models/city';
 const router = module.exports = express.Router();
 
 router.get('/', (req, res) => {
-  const countries = Country.find();
-  res.render('countries/index', { countries });
+  Country.find().populate(['cityIds']).exec((err, countries) => {
+    res.render('countries/index', { countries });
+  });
 });
 
 router.get('/new', (req, res) => {
@@ -16,13 +17,14 @@ router.get('/new', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  const country = Country.find(req.params.id);
-  res.render('countries/show', { country });
+  Country.find(req.params.id).populate('cityIds').exec((err, country) => {
+    res.render('countries/show', { country });
+  });
 });
 
 router.post('/', (req, res) => {
   const country = new Country(req.body);
-  console.log('NEW COUNTRY: ' + req.body);
-  country.save();
-  res.redirect('/country');
+  country.save(() => {
+    res.redirect('/country');
+  });
 });

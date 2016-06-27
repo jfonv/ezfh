@@ -2,3 +2,14 @@ extends ../shared/template
 block content
   h1 City Index
   p Take a look at all these cities.
+  table
+    thead
+      td name
+      td cost
+      td balance
+      td country
+    each city in cities
+      tr
+        td= city.name
+        td= city.balance
+        td= city.cost

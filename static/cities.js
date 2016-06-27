@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 
-$(document).ready(init);
+$(document).ready(inits);
 
 function init() {
   $('#newCityForm').show();
